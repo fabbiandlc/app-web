@@ -1,0 +1,351 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="Sistema de Gestión Administrativa Académica">
+  <main class="min-h-screen bg-black text-white">
+    <section class="relative min-h-screen overflow-hidden px-4 flex items-center">
+      <div class="absolute inset-0 bg-gradient-to-br from-gray-900 to-black"></div>
+      <div class="absolute inset-0 bg-[url('/noise.svg')] opacity-5"></div>
+      
+      <!-- Hero Content -->
+      <div class="max-w-6xl mx-auto w-full relative z-10 py-12 md:py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold tracking-tight mb-4 md:mb-6">
+              Gestión <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Administrativa Académica</span>
+            </h1>
+            <p class="text-base md:text-xl mb-6 md:mb-10 text-gray-400 max-w-lg">
+              Optimiza las tareas administrativas en tu entorno académico con una interfaz intuitiva que facilita la planificación y gestión de recursos.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a 
+                href="/contacto" 
+                class="bg-white hover:bg-gray-200 transition-colors text-black font-medium py-2 md:py-3 px-6 md:px-8 rounded-md text-sm w-full sm:w-auto text-center"
+              >
+                Descargar
+              </a>
+              <a 
+                href="/contacto" 
+                class="bg-black hover:bg-gray-200 transition-colors text-white border border-gray-700 font-medium py-2 md:py-3 px-6 md:px-8 rounded-md text-sm w-full sm:w-auto text-center"
+              >
+                Manual de usuario
+              </a>
+            </div>
+          </div>
+          <div class="flex justify-center lg:justify-end mt-8 lg:mt-0">
+            <div class="relative">
+              <img 
+                src="/Mockup.png" 
+                alt="Interfaz de la aplicación" 
+                class="w-64 sm:w-72 md:w-80 h-auto"
+              />
+              <div class="absolute inset-0"></div>
+            </div>
+            <div class="absolute -z-10 top-1/3 right-1/4 w-48 md:w-72 h-48 md:h-72 bg-blue-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute -z-10 bottom-1/3 left-1/4 w-48 md:w-72 h-48 md:h-72 bg-purple-500/20 rounded-full blur-3xl"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 md:py-24 px-4 bg-gray-900/50 relative">
+      <div class="absolute inset-0 bg-[url('/noise.svg')] opacity-5"></div>
+      <div class="max-w-6xl mx-auto relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 md:mb-16">Módulos principales</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors">
+            <div class="text-3xl mb-4 md:mb-6">📅</div>
+            <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4">Actividades</h3>
+            <p class="text-gray-400 text-sm md:text-base">Centraliza la bitácora de todas las actividades con opciones de creación, consulta y gestión según el rol del usuario.</p>
+          </div>
+          
+          <div class="bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors">
+            <div class="text-3xl mb-4 md:mb-6">🗓️</div>
+            <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4">Calendario</h3>
+            <p class="text-gray-400 text-sm md:text-base">Visualiza y planifica actividades con una herramienta interactiva que mejora el seguimiento de eventos programados.</p>
+          </div>
+          
+          <div class="bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors">
+            <div class="text-3xl mb-4 md:mb-6">👥</div>
+            <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4">Gestión</h3>
+            <p class="text-gray-400 text-sm md:text-base">Administra docentes, materias y grupos mediante pestañas especializadas para el registro de recursos académicos.</p>
+          </div>
+          
+          <div class="bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors">
+            <div class="text-3xl mb-4 md:mb-6">⏰</div>
+            <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4">Horarios</h3>
+            <p class="text-gray-400 text-sm md:text-base">Crea y gestiona horarios académicos para docentes y grupos con control de permisos según el rol de usuario.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section class="py-16 md:py-24 px-4 relative">
+      <div class="absolute inset-0 bg-[url('/noise.svg')] opacity-5"></div>
+      <div class="max-w-6xl mx-auto relative z-10">
+        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <div class="flex-1 order-2 md:order-1">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Administración eficiente basada en roles</h2>
+            <p class="text-gray-400 mb-6 md:mb-8 text-sm md:text-base">
+              Nuestro sistema define permisos específicos según el rol del usuario, garantizando un control jerárquico sobre los datos y operaciones sensibles.
+            </p>
+            <ul class="space-y-3 md:space-y-4">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-gray-300 text-sm md:text-base">Administrador con acceso completo a todas las funcionalidades</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-gray-300 text-sm md:text-base">Usuario estándar con permisos limitados de visualización y registro</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-gray-300 text-sm md:text-base">Datos interconectados entre módulos para asegurar coherencia</span>
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1 order-1 md:order-2 mb-8 md:mb-0">
+            <div class="relative rounded-lg overflow-hidden border border-gray-800 shadow-2xl shadow-blue-500/10">
+              <img 
+                src="/Roles.png" 
+                alt="Interfaz de la aplicación" 
+                class="w-full h-auto"
+              />
+              <div class="absolute inset-0"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interfaces Gallery -->
+    <section class="py-16 md:py-24 px-4 bg-gray-900/50 relative">
+      <div class="absolute inset-0 bg-[url('/noise.svg')] opacity-5"></div>
+      <div class="max-w-6xl mx-auto relative z-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-4 md:mb-6">Pantallas del sistema</h2>
+        <p class="text-gray-400 text-center max-w-2xl mx-auto mb-10 md:mb-16 text-sm md:text-base">
+          Diseñadas para optimizar el flujo de trabajo administrativo en entornos académicos.
+        </p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div class="group relative rounded-lg overflow-hidden border border-gray-800 aspect-video">
+            <img 
+              src="/Mockup.png" 
+              alt="Pantalla de Actividades" 
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+              <div class="p-4">
+                <h4 class="text-white font-medium text-sm md:text-base">Pantalla de Actividades</h4>
+                <p class="text-gray-300 text-xs md:text-sm">Creación y gestión de eventos académicos</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="group relative rounded-lg overflow-hidden border border-gray-800 aspect-video">
+            <img 
+              src="/Mockup.png" 
+              alt="Pantalla de Calendario" 
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+              <div class="p-4">
+                <h4 class="text-white font-medium text-sm md:text-base">Pantalla de Calendario</h4>
+                <p class="text-gray-300 text-xs md:text-sm">Visualización interactiva de actividades por fecha</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="group relative rounded-lg overflow-hidden border border-gray-800 aspect-video">
+            <img 
+              src="/Mockup.png" 
+              alt="Pantalla de Gestión" 
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+              <div class="p-4">
+                <h4 class="text-white font-medium text-sm md:text-base">Pantalla de Gestión</h4>
+                <p class="text-gray-300 text-xs md:text-sm">Administración de docentes, materias y grupos</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="group relative rounded-lg overflow-hidden border border-gray-800 aspect-video">
+            <img 
+              src="/Mockup.png" 
+              alt="Pantalla de Horarios" 
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+              <div class="p-4">
+                <h4 class="text-white font-medium text-sm md:text-base">Pantalla de Horarios</h4>
+                <p class="text-gray-300 text-xs md:text-sm">Creación y consulta de horarios académicos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Funcionalidades Section -->
+    <section class="py-16 md:py-24 px-4 relative">
+      <div class="absolute inset-0 bg-[url('/noise.svg')] opacity-5"></div>
+      <div class="max-w-6xl mx-auto relative z-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-10 md:mb-16">Funcionalidades por módulo</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-gray-900 border border-gray-800 p-4 md:p-6 rounded-lg">
+            <div class="flex items-center mb-4 md:mb-6">
+              <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-base md:text-lg font-bold mr-3 md:mr-4">AC</div>
+              <div>
+                <h4 class="font-medium text-sm md:text-base">Pantalla de Actividades</h4>
+              </div>
+            </div>
+            <p class="text-gray-400 mb-3 md:mb-4 text-sm md:text-base">Centraliza la bitácora de todas las actividades registradas en el sistema con las siguientes funciones:</p>
+            <ul class="text-gray-400 space-y-1 md:space-y-2 list-disc pl-5 text-sm md:text-base">
+              <li>Creación de actividades por administrador y usuario estándar</li>
+              <li>Eliminación de actividades por ambos roles</li>
+              <li>Modificación de actividades exclusiva para el administrador</li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-900 border border-gray-800 p-4 md:p-6 rounded-lg">
+            <div class="flex items-center mb-4 md:mb-6">
+              <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center text-base md:text-lg font-bold mr-3 md:mr-4">CA</div>
+              <div>
+                <h4 class="font-medium text-sm md:text-base">Pantalla de Calendario</h4>
+              </div>
+            </div>
+            <p class="text-gray-400 mb-3 md:mb-4 text-sm md:text-base">Herramienta visual para la planificación y seguimiento de actividades programadas:</p>
+            <ul class="text-gray-400 space-y-1 md:space-y-2 list-disc pl-5 text-sm md:text-base">
+              <li>Visualización de actividades por fecha para todos los usuarios</li>
+              <li>Navegación mensual para planificar o revisar actividades</li>
+              <li>Consulta rápida y eficiente de la agenda académica</li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-900 border border-gray-800 p-4 md:p-6 rounded-lg mt-4 md:mt-6">
+            <div class="flex items-center mb-4 md:mb-6">
+              <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-base md:text-lg font-bold mr-3 md:mr-4">GE</div>
+              <div>
+                <h4 class="font-medium text-sm md:text-base">Pantalla de Gestión</h4>
+              </div>
+            </div>
+            <p class="text-gray-400 mb-3 md:mb-4 text-sm md:text-base">Administración de recursos académicos en tres pestañas (exclusivo para administrador):</p>
+            <ul class="text-gray-400 space-y-1 md:space-y-2 list-disc pl-5 text-sm md:text-base">
+              <li>Docentes: registro de datos, modificación y eliminación</li>
+              <li>Materias: gestión de asignaturas, códigos y horas asignadas</li>
+              <li>Grupos: administración de grupos de estudiantes</li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-900 border border-gray-800 p-4 md:p-6 rounded-lg mt-4 md:mt-6">
+            <div class="flex items-center mb-4 md:mb-6">
+              <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-yellow-500/20 text-yellow-400 flex items-center justify-center text-base md:text-lg font-bold mr-3 md:mr-4">HO</div>
+              <div>
+                <h4 class="font-medium text-sm md:text-base">Pantalla de Horarios</h4>
+              </div>
+            </div>
+            <p class="text-gray-400 mb-3 md:mb-4 text-sm md:text-base">Creación y gestión de horarios académicos en dos pestañas:</p>
+            <ul class="text-gray-400 space-y-1 md:space-y-2 list-disc pl-5 text-sm md:text-base">
+              <li>Creación de horarios: exclusiva para administrador</li>
+              <li>Modificación y eliminación: solo por administrador</li>
+              <li>Consulta de horarios: disponible para usuario estándar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 px-4 relative">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20"></div>
+      <div class="absolute inset-0 bg-[url('/noise.svg')] opacity-5"></div>
+      <div class="max-w-4xl mx-auto text-center relative z-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">¿Listo para optimizar la gestión administrativa de tu institución?</h2>
+        <p class="text-gray-400 mb-6 md:mb-10 max-w-2xl mx-auto text-sm md:text-base">Un sistema integral diseñado específicamente para entornos académicos que facilita la planificación y administración de recursos.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" class="bg-white hover:bg-gray-200 transition-colors text-black font-medium py-2 md:py-3 px-6 md:px-8 rounded-md text-sm w-full sm:w-auto text-center">
+            Descargar
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer con z-index y color ligeramente diferente para distinguirlo -->
+    <footer class="relative z-10 bg-gray-950 py-8 md:py-12 px-4 border-t border-gray-800 mt-8 md:mt-12">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+          <div class="md:w-1/3">
+            <h3 class="text-white font-bold text-lg md:text-xl mb-3 md:mb-4">SistemAdmin</h3>
+            <p class="text-gray-400 text-sm md:text-base">Sistema integral de gestión administrativa para entornos académicos.</p>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-8 md:gap-x-12 gap-y-6 md:gap-y-8 w-full md:w-auto">
+            <div>
+              <h4 class="text-white font-medium mb-3 md:mb-4 text-sm md:text-base">Módulos</h4>
+              <ul class="space-y-1 md:space-y-2">
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-xs md:text-sm">Actividades</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-xs md:text-sm">Calendario</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-xs md:text-sm">Gestión</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-xs md:text-sm">Horarios</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-white font-medium mb-3 md:mb-4 text-sm md:text-base">Soporte</h4>
+              <ul class="space-y-1 md:space-y-2">
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-xs md:text-sm">Documentación</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-xs md:text-sm">Contacto técnico</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-white font-medium mb-3 md:mb-4 text-sm md:text-base">Legal</h4>
+              <ul class="space-y-1 md:space-y-2">
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-xs md:text-sm">Términos de uso</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-xs md:text-sm">Privacidad</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 md:mt-12 pt-4 md:pt-6 border-t border-gray-800 text-center">
+          <p class="text-gray-500 text-xs md:text-sm">&copy; 2025 SistemAdmin. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+</Layout>
+
+<style>
+  /* Aseguramos que los enlaces sean interactivos */
+  a {
+    position: relative;
+    z-index: 5;
+  }
+  
+  /* Animación sutil para elementos interactivos */
+  a:active {
+    transform: translateY(1px);
+  }
+  
+  /* Media queries para mejorar la responsividad */
+  @media (max-width: 640px) {
+    .text-3xl {
+      font-size: 1.75rem;
+    }
+    
+    .py-24 {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+</style>
