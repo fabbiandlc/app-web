@@ -1,16 +1,59 @@
----
----
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/icon.png" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Sistema integral de gestión administrativa académica que optimiza la planificación y administración de recursos para entornos educativos." />
+    
+    <!-- Precargar recursos críticos -->
+    <link rel="preload" href="/_astro/Header.-O8eQvs3.css" as="style" />
+    
+    <!-- Configuración de seguridad -->
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';" />
+    
+    <!-- Optimización para SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Fabián Cruz" />
+    <meta name="keywords" content="gestión administrativa, sistema académico, administración escolar, horarios académicos" />
+    
     <title>Aplicación de gestión administrativa</title>
+    
+    <!-- Estilos críticos inline para renderizado más rápido -->
+    <style>
+      /* Estilos mínimos para el contenido visible inicialmente */
+      body { 
+        margin: 0; 
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: #000;
+        color: #fff;
+      }
+      
+      /* Mejora del contraste para accesibilidad */
+      .text-gray-400 {
+        color: #adadb8 !important; /* Gris más claro para mejor contraste */
+      }
+    </style>
+    
+    <!-- El resto de tus estilos -->
+    <slot name="head" />
   </head>
   <body>
     <slot />
+    
+    <!-- Script para cargar imágenes WebP con fallback a formato original -->
+    <script>
+      // Detección de soporte WebP
+      function checkWebpSupport() {
+        const elem = document.createElement('canvas');
+        if (elem.getContext && elem.getContext('2d')) {
+          return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+        }
+        return false;
+      }
+      
+    </script>
   </body>
 </html>
