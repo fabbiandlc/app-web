@@ -1,7 +1,26 @@
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = 'https://laptztfdcryylfjorfpl.supabase.co';
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY; // Store in environment variable
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY; // Must be set in Vercel environment variables
+
+// Validate environment variable
+if (!supabaseServiceKey) {
+  console.error('SUPABASE_SERVICE_ROLE_KEY is not set');
+  return new Response(
+    JSON.stringify({
+      success: false,
+      message: 'Server configuration error',
+    }),
+    {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
+      },
+    }
+  );
+}
+
 const supabase = createClient(supabaseUrl, supabaseServiceKey, {
   auth: {
     autoRefreshToken: false,
@@ -24,7 +43,7 @@ export async function POST({ request }) {
           status: 400,
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*', // Restrict in production
+            'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
           },
         }
       );
@@ -40,21 +59,35 @@ export async function POST({ request }) {
           status: 400,
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
           },
         }
       );
     }
 
-    // Check if user exists
-    const { data: user, error: userError } = await supabase
-      .from('users')
-      .select('id')
-      .eq('email', email)
-      .single();
+    // Fetch user by email using admin API
+    const { data: users, error: listError } = await supabase.auth.admin.listUsers();
 
-    if (userError || !user) {
-      console.error('Error checking user:', userError);
+    if (listError) {
+      console.error('Error listing users:', listError);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          message: 'Error al verificar el usuario',
+        }),
+        {
+          status: 500,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
+          },
+        }
+      );
+    }
+
+    const user = users.users.find((u) => u.email === email);
+
+    if (!user) {
       return new Response(
         JSON.stringify({
           success: false,
@@ -64,7 +97,7 @@ export async function POST({ request }) {
           status: 404,
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
           },
         }
       );
@@ -86,7 +119,7 @@ export async function POST({ request }) {
           status: 500,
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
           },
         }
       );
@@ -101,7 +134,7 @@ export async function POST({ request }) {
         status: 200,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
         },
       }
     );
@@ -110,15 +143,27 @@ export async function POST({ request }) {
     return new Response(
       JSON.stringify({
         success: false,
-        message: 'Error interno del servidor',
+        message: 'Error interno del servidor: ' + err.message,
       }),
       {
         status: 500,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
         },
       }
     );
   }
+}
+
+// Handle CORS preflight requests
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
 }
