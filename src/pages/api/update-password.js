@@ -1,8 +1,8 @@
 // src/pages/api/update-password.js
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+const supabaseUrl = "https://laptztfdcryylfjorfpl.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhcHR6dGZkY3J5eWxmam9yZnBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ3Mjk0NjgsImV4cCI6MjA2MDMwNTQ2OH0.iGLmd7M91bv9ZVJD44rxkiOSG1gdGYgd5uXsBo60upg";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function POST({ request }) {
