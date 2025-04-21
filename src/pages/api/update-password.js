@@ -3,24 +3,6 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = 'https://laptztfdcryylfjorfpl.supabase.co';
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY; // Must be set in Vercel environment variables
 
-// Validate environment variable
-if (!supabaseServiceKey) {
-  console.error('SUPABASE_SERVICE_ROLE_KEY is not set');
-  return new Response(
-    JSON.stringify({
-      success: false,
-      message: 'Server configuration error',
-    }),
-    {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
-      },
-    }
-  );
-}
-
 const supabase = createClient(supabaseUrl, supabaseServiceKey, {
   auth: {
     autoRefreshToken: false,
@@ -30,6 +12,24 @@ const supabase = createClient(supabaseUrl, supabaseServiceKey, {
 
 export async function POST({ request }) {
   try {
+    // Validate environment variable
+    if (!supabaseServiceKey) {
+      console.error('SUPABASE_SERVICE_ROLE_KEY is not set');
+      return new Response(
+        JSON.stringify({
+          success: false,
+          message: 'Server configuration error',
+        }),
+        {
+          status: 500,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
+          },
+        }
+      );
+    }
+
     const body = await request.json();
     const { email, newPassword } = body;
 
@@ -134,7 +134,7 @@ export async function POST({ request }) {
         status: 200,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
+            'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
         },
       }
     );
@@ -149,7 +149,7 @@ export async function POST({ request }) {
         status: 500,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
+            'Access-Control-Allow-Origin': 'https://aplicacionadministrativa.vercel.app',
         },
       }
     );
