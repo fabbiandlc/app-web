@@ -37,6 +37,15 @@ a, button {
   transform: translateY(0);
 }
 
+/* Animación de zoom para cards */
+.card-zoom {
+  transition: transform 0.3s ease;
+}
+
+.card-zoom:hover {
+  transform: scale(1.05);
+}
+
 /* Estilos para todas las secciones - tema consistente */
 section {
   background-color: var(--color-pure-black);
