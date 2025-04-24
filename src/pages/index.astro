@@ -15,7 +15,7 @@ const description = "Optimiza las tareas administrativas en tu entorno académic
 ---
 
 <Layout title={title} description={description}>
-  <main class="min-h-screen bg-black text-white">
+  <main>
     <Header />
     <Hero />
     <ModulosSection />
@@ -29,5 +29,33 @@ const description = "Optimiza las tareas administrativas en tu entorno académic
 <style>
   main {
     min-height: 100vh;
+    position: relative;
+    background-color: #000;
+  }
+  
+  /* Añadir pseudo-elementos para el efecto de fondo */
+  main::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, 
+      rgba(25, 25, 112, 0.3) 0%, 
+      rgba(0, 0, 128, 0.2) 40%, 
+      rgba(0, 0, 139, 0.05) 80%, 
+      rgba(0, 0, 0, 0) 100%);
+    filter: blur(50px);
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  main::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: url('/noise.svg');
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: -1;
   }
 </style>

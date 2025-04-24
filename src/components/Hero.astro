@@ -1,76 +1,108 @@
----
----
-
-<section class="relative min-h-screen overflow-hidden px-4 flex items-center justify-center" id="hero-section">
+<section class="relative min-h-[150vh] px-4 flex flex-col items-center justify-center" id="hero-section">
   <div class="absolute inset-0 bg-black"></div>
-  <div class="gradient-bg absolute inset-0 opacity-80 pointer-events-none"></div>
+  <div class="gradient-bg absolute inset-0 opacity-70 pointer-events-none"></div>
+  <div class="particles-container absolute inset-0 pointer-events-none"></div>
   <div class="absolute inset-0 bg-[url('/noise.svg')] opacity-10"></div>
-  <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: repeating-linear-gradient(transparent, transparent 9px, rgba(255, 255, 255, 0.1) 10px, transparent 11px); transform: rotate(45deg);"></div>
   
-  <!-- Hero Content -->
-  <div class="max-w-6xl mx-auto w-screen relative z-10 py-8 md:py-16">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
-      <div class="flex flex-col justify-center lg:pr-0 reveal text-center lg:text-left">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-2 md:mb-3">
-          Gestión <span class="text-yang">Administrativa Académica</span>
-        </h1>
-        <p class="text-balance text-base md:text-lg mb-3 md:mb-4 max-w-lg mx-auto lg:mx-0">
-          Optimiza las tareas administrativas en tu entorno académico con una interfaz intuitiva que facilita la planificación y gestión de recursos.
-        </p>
-        <div class="flex flex-wrap gap-2 justify-center lg:justify-start">
-          <a 
-            href="/Gestión.apk" 
-            download
-            class="bg-yang text-yin hover-yang font-medium py-2 md:py-3 px-6 md:px-8 rounded-md text-sm w-full sm:w-auto text-center inline-flex items-center justify-center"
-            aria-label="Descargar la aplicación"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-            Descargar
-          </a>
-          <a 
-            href="/manual" 
-            class="bg-transparent hover:bg-gray-800 transition-colors text-yang border border-yang font-medium py-2 md:py-3 px-6 md:px-8 rounded-md text-sm w-full sm:w-auto text-center inline-flex items-center justify-center"
-            aria-label="Ver manual de usuario"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-            Manual de usuario
-          </a>
-        </div>
-      </div>
-      <div class="flex justify-center lg:justify-end mt-2 lg:mt-0 reveal">
-        <div class="relative flex gap-4 items-center">
-          <img 
-            src="/Mockup1.webp" 
-            alt="Vista de la aplicación - Panel de Actividades" 
-            class="w-48 sm:w-52 md:w-60 h-auto transition-transform duration-300 hover:scale-105"
-            width="240" 
-            height="480"
-            loading="lazy"
-            decoding="async"
-          />
-          <img 
-            src="/Mockup2.webp" 
-            alt="Vista de la aplicación - Calendario" 
-            class="w-48 sm:w-52 md:w-60 h-auto transition-transform duration-300 hover:scale-105"
-            width="240" 
-            height="480"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </div>
+  <!-- Hero Content - Centrado verticalmente en la pantalla -->
+  <div class="w-full flex flex-col items-center justify-center text-center mb-64 md:mb-80 relative z-10">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-2 md:mb-3">
+      Gestión <span class="text-yang">Administrativa Académica</span>
+    </h1>
+    <p class="text-balance text-base md:text-lg mb-3 md:mb-4 max-w-lg mx-auto">
+      Optimiza las tareas administrativas en tu entorno académico con una interfaz intuitiva que facilita la planificación y gestión de recursos.
+    </p>
+    <div class="flex flex-wrap gap-2 justify-center">
+      <a 
+        href="/Gestión.apk" 
+        download
+        class="bg-yang text-yin hover-yang font-medium py-2 md:py-3 px-6 md:px-8 rounded-md text-sm w-full sm:w-auto text-center inline-flex items-center justify-center"
+        aria-label="Descargar la aplicación"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        Descargar
+      </a>
+      <a 
+        href="/manual" 
+        class="bg-transparent hover:bg-gray-800 transition-colors text-yang border border-yang font-medium py-2 md:py-3 px-6 md:px-8 rounded-md text-sm w-full sm:w-auto text-center inline-flex items-center justify-center"
+        aria-label="Ver manual de usuario"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+        Manual de usuario
+      </a>
+    </div>
+  </div>
+  
+  <!-- Single Mockup Container - positioned lower in the viewport -->
+  <div class="fixed-bottom-container">
+    <div class="mockup-container" data-scroll="central">
+      <img 
+        src="/Mockup1.webp" 
+        alt="Vista de la aplicación - Panel de Actividades" 
+        class="block w-auto mockup-image"
+        width="300" 
+        height="600"
+        fetchpriority="high"
+      />
     </div>
   </div>
 </section>
 
 <style>
   .gradient-bg {
-    background: radial-gradient(circle at 50% 50%, rgba(180, 180, 180, 0.7) 0%, rgba(100, 100, 100, 0.3) 30%, rgba(30, 30, 30, 0.1) 70%, rgba(0, 0, 0, 0) 100%);
-    filter: blur(30px);
+    background: radial-gradient(circle at 50% 50%, rgba(25, 25, 112, 0.3) 0%, rgba(0, 0, 128, 0.2) 40%, rgba(0, 0, 139, 0.05) 80%, rgba(0, 0, 0, 0) 100%);
+    filter: blur(50px);
+    transition: background 0.8s ease-out;
+  }
+  
+  .particles-container {
+    overflow: hidden;
+  }
+  
+  /* Estilos para el mockup */
+  .fixed-bottom-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+    align-items: flex-end;
+    z-index: 20;
+  }
+  
+  .mockup-container {
+    position: relative;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .mockup-container.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .mockup-image {
+    display: block;
+    max-height: 70vh;
+    object-fit: contain;
+    object-position: bottom;
+    border-radius: 24px 24px 0 0;
+  }
+  
+  .particle {
+    position: absolute;
+    background: radial-gradient(circle at center, rgba(65, 105, 225, 0.9) 0%, rgba(0, 0, 139, 0.6) 30%, rgba(25, 25, 112, 0.2) 70%, transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
   }
 </style>
 
@@ -78,64 +110,196 @@
   document.addEventListener('DOMContentLoaded', () => {
     const heroSection = document.getElementById('hero-section');
     const gradientBg = heroSection.querySelector('.gradient-bg');
+    const particlesContainer = heroSection.querySelector('.particles-container');
+    const mockupContainer = document.querySelector('.mockup-container');
     
+    // Gradient animation variables
     let mouseX = 50;
     let mouseY = 50;
     let targetX = 50;
     let targetY = 50;
-    
-    // Variables para el movimiento de "humo pesado"
     let time = 0;
-    let orbit1 = { x: 0, y: 0 };
-    let orbit2 = { x: 0, y: 0 };
+    
+    // Partículas variables
+    const particles = [];
+    const maxParticles = 30;
+    let lastParticleTime = 0;
+    
+    // Función para crear una partícula
+    function createParticle(x, y) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      
+      // Tamaño aleatorio entre 5px y 15px
+      const size = Math.random() * 10 + 5;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      // Posición inicial
+      const posX = x - size / 2;
+      const posY = y - size / 2;
+      particle.style.left = `${posX}px`;
+      particle.style.top = `${posY}px`;
+      
+      // Velocidad y dirección aleatoria
+      const speed = {
+        x: (Math.random() - 0.5) * 1.5,
+        y: (Math.random() - 0.5) * 1.5 - 1 // Tendencia hacia arriba
+      };
+      
+      // Duración de vida
+      const lifespan = 2000 + Math.random() * 3000; // 2-5 segundos
+      const creationTime = Date.now();
+      
+      // Agregar al DOM
+      particlesContainer.appendChild(particle);
+      
+      // Mostrar partícula con un pequeño retraso
+      setTimeout(() => {
+        particle.style.opacity = (Math.random() * 0.5 + 0.2).toString(); // Opacidad entre 0.2 y 0.7
+      }, 10);
+      
+      // Agregar a la matriz de partículas
+      particles.push({
+        element: particle,
+        speed,
+        creationTime,
+        lifespan,
+        posX,
+        posY
+      });
+      
+      // Limitar el número de partículas
+      if (particles.length > maxParticles) {
+        const oldestParticle = particles.shift();
+        oldestParticle.element.remove();
+      }
+    }
+    
+    // Función para actualizar partículas
+    function updateParticles() {
+      const currentTime = Date.now();
+      
+      particles.forEach((particle, index) => {
+        // Calcular tiempo de vida
+        const age = currentTime - particle.creationTime;
+        
+        if (age > particle.lifespan) {
+          // Eliminar partícula si ha superado su tiempo de vida
+          particle.element.remove();
+          particles.splice(index, 1);
+        } else {
+          // Mover partícula
+          particle.posX += particle.speed.x;
+          particle.posY += particle.speed.y;
+          
+          // Aplicar efecto de humo (ralentizar y difuminar con el tiempo)
+          particle.speed.x *= 0.99;
+          particle.speed.y *= 0.99;
+          
+          // Aplicar algo de turbulencia suave
+          particle.speed.x += (Math.random() - 0.5) * 0.1;
+          particle.speed.y += (Math.random() - 0.5) * 0.1;
+          
+          // Actualizar posición en el DOM
+          particle.element.style.left = `${particle.posX}px`;
+          particle.element.style.top = `${particle.posY}px`;
+          
+          // Desvanecimiento gradual
+          const lifePercent = age / particle.lifespan;
+          particle.element.style.opacity = (0.7 - lifePercent * 0.7).toString();
+        }
+      });
+      
+      requestAnimationFrame(updateParticles);
+    }
     
     // Función para capturar la posición del mouse
     function trackMouse(e) {
       const heroRect = heroSection.getBoundingClientRect();
       
-      // Solo aplicar el efecto dentro del header
       if (e.clientY <= heroRect.bottom) {
-        // Calcular la posición relativa al hero section
         targetX = ((e.clientX - heroRect.left) / heroRect.width) * 100;
         targetY = ((e.clientY - heroRect.top) / heroRect.height) * 100;
+        
+        // Crear partículas ocasionalmente mientras el mouse se mueve
+        const currentTime = Date.now();
+        if (currentTime - lastParticleTime > 50) { // Limitar a 20 partículas por segundo
+          createParticle(e.clientX, e.clientY);
+          lastParticleTime = currentTime;
+        }
       }
     }
     
-    // Función para animar el degradado como humo pesado
-    function animateSmokyGradient() {
+    // Función para animar el degradado de humo azul rey
+    function animateRoyalBlueSmoke() {
       time += 0.01;
       
-      // Actualizar la posición principal con inercia (efecto de humo pesado)
+      // Movimiento más suave para simular humo
       mouseX += (targetX - mouseX) * 0.05;
       mouseY += (targetY - mouseY) * 0.05;
       
-      // Calcular órbitas con diferentes frecuencias y amplitudes
-      orbit1.x = Math.sin(time * 0.8) * 8;
-      orbit1.y = Math.cos(time * 0.7) * 6;
+      // Movimientos orgánicos adicionales
+      const sineWave1 = Math.sin(time * 0.5) * 5;
+      const sineWave2 = Math.cos(time * 0.3) * 3;
       
-      orbit2.x = Math.sin(time * 1.2 + 2) * 4;
-      orbit2.y = Math.cos(time * 1.5 + 1) * 3;
+      const finalX = mouseX + sineWave1;
+      const finalY = mouseY + sineWave2;
       
-      // Combinar todos los movimientos
-      const finalX = mouseX + orbit1.x + orbit2.x * 0.5;
-      const finalY = mouseY + orbit1.y + orbit2.y * 0.5;
+      // Colores azul rey con variaciones sutiles
+      const hue = 225 + Math.sin(time) * 5; // Varía entre 220-230 (tonos azul rey)
+      const satLight = 60 + Math.sin(time * 1.5) * 10; // Varía entre 50-70%
       
-      // Aplicar el efecto con un gradiente más denso y grande
-      gradientBg.style.background = `radial-gradient(
-        circle at ${finalX}% ${finalY}%, 
-        rgba(100, 100, 150, 0.7) 0%, 
-        rgba(100, 100, 100, 0.3) 30%, 
-        rgba(30, 30, 30, 0.1) 70%,
-        rgba(0, 0, 0, 0) 100%
-      )`;
+      gradientBg.style.background = `
+        radial-gradient(
+          circle at ${finalX}% ${finalY}%, 
+          hsla(${hue}, 80%, ${satLight}%, 0.4) 0%, 
+          hsla(${hue - 5}, 85%, ${satLight - 10}%, 0.25) 30%, 
+          hsla(${hue - 10}, 90%, ${satLight - 20}%, 0.15) 60%,
+          rgba(0, 0, 0, 0) 100%
+        )
+      `;
       
-      requestAnimationFrame(animateSmokyGradient);
+      requestAnimationFrame(animateRoyalBlueSmoke);
     }
     
-    // Agregar listener para el movimiento del mouse
-    document.addEventListener('mousemove', trackMouse);
+    // Simple scroll animation for mockup
+    function checkScrollPosition() {
+      const scrollPosition = window.scrollY;
+      const triggerPosition = window.innerHeight * 0.1;
+      
+      if (scrollPosition > triggerPosition) {
+        mockupContainer.classList.add('visible');
+      } else {
+        mockupContainer.classList.remove('visible');
+      }
+    }
     
-    // Iniciar la animación
-    animateSmokyGradient();
+    // Initialize animations
+    document.addEventListener('mousemove', trackMouse);
+    window.addEventListener('scroll', checkScrollPosition);
+    
+    // Check initial scroll position
+    checkScrollPosition();
+    animateRoyalBlueSmoke();
+    updateParticles();
+    
+    // IntersectionObserver for better performance
+    if ('IntersectionObserver' in window) {
+      const options = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -10% 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            checkScrollPosition();
+          }
+        });
+      }, options);
+      
+      observer.observe(heroSection);
+    }
   });
 </script>

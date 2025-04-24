@@ -1,51 +1,186 @@
----
----
-
-<section class="py-16 md:py-24 px-4 relative" id="modulos">
+<section class="py-16 md:py-24 px-4 relative" id="funcionalidades">
   <div class="absolute inset-0 bg-[url('/noise.svg')] opacity-5"></div>
   <div class="max-w-6xl mx-auto relative z-10">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 md:mb-16 text-yang reveal">Módulos principales</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 md:mb-16 text-yang reveal">Funcionalidades por módulo</h2>
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors reveal card-zoom">
-        <div class="text-3xl mb-4 md:mb-6 flex justify-center" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yang" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Pantalla de Actividades -->
+      <div class="module-card bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg transition-all duration-500 reveal">
+        <div class="card-icon text-3xl mb-4 md:mb-6 flex justify-center" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yang transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
         </div>
-        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-yang">Actividades</h3>
-        <p class="text-balance text-sm md:text-base">Centraliza la bitácora de todas las actividades con opciones de creación, consulta y gestión según el rol del usuario.</p>
+        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-yang transition-colors duration-500">Pantalla de Actividades</h3>
+        <p class="text-balance text-sm md:text-base transition-opacity duration-500">Centraliza la bitácora de todas las actividades registradas en el sistema con creación, eliminación y modificación según el rol de usuario.</p>
       </div>
       
-      <div class="bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors reveal card-zoom">
-        <div class="text-3xl mb-4 md:mb-6 flex justify-center" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yang" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <!-- Pantalla de Calendario -->
+      <div class="module-card bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg transition-all duration-500 reveal">
+        <div class="card-icon text-3xl mb-4 md:mb-6 flex justify-center" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yang transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
         </div>
-        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-yang">Calendario</h3>
-        <p class="text-balance text-sm md:text-base">Visualiza y planifica actividades con una herramienta interactiva que mejora el seguimiento de eventos programados.</p>
+        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-yang transition-colors duration-500">Pantalla de Calendario</h3>
+        <p class="text-balance text-sm md:text-base transition-opacity duration-500">Herramienta visual para la planificación y seguimiento de actividades con navegación mensual y consulta rápida de la agenda académica.</p>
       </div>
       
-      <div class="bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors reveal card-zoom">
-        <div class="text-3xl mb-4 md:mb-6 flex justify-center" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yang" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <!-- Pantalla de Gestión -->
+      <div class="module-card bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg transition-all duration-500 reveal">
+        <div class="card-icon text-3xl mb-4 md:mb-6 flex justify-center" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yang transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v2h5v-2zm.367-2A13.988 13.988 0 017 16c0-1 0-2 .015-3M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5.615-2.392a5.985 5.985 0 00-2.885-2.234 5.985 5.985 0 00-6.9 2.234 5.986 5.986 0 00-2.235 6.9 5.986 5.986 0 002.235 2.885 5.986 5.986 0 006.9 2.234 5.986 5.986 0 002.885-2.234 5.987 5.987 0 002.234-6.9 5.987 5.987 0 00-2.234-2.885z" />
           </svg>
         </div>
-        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-yang">Gestión</h3>
-        <p class="text-balance text-sm md:text-base">Administra docentes, materias y grupos mediante pestañas especializadas para el registro de recursos académicos.</p>
+        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-yang transition-colors duration-500">Pantalla de Gestión</h3>
+        <p class="text-balance text-sm md:text-base transition-opacity duration-500">Administración de recursos académicos con pestañas para registro de docentes, materias y creación de grupos académicos.</p>
       </div>
       
-      <div class="bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg hover:border-gray-700 transition-colors reveal card-zoom">
-        <div class="text-3xl mb-4 md:mb-6 flex justify-center" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yang" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <!-- Pantalla de Horarios -->
+      <div class="module-card bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg transition-all duration-500 reveal">
+        <div class="card-icon text-3xl mb-4 md:mb-6 flex justify-center" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yang transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
-        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-yang">Horarios</h3>
-        <p class="text-balance text-sm md:text-base">Crea y gestiona horarios académicos para docentes y grupos con control de permisos según el rol de usuario.</p>
+        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-yang transition-colors duration-500">Pantalla de Horarios</h3>
+        <p class="text-balance text-sm md:text-base transition-opacity duration-500">Herramienta para la creación y gestión de horarios académicos con visualización semanal y control de permisos por rol.</p>
+      </div>
+      
+      <!-- Pantalla de Estadísticas -->
+      <div class="module-card bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg transition-all duration-500 reveal">
+        <div class="card-icon text-3xl mb-4 md:mb-6 flex justify-center" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yang transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-yang transition-colors duration-500">Pantalla de Estadísticas</h3>
+        <p class="text-balance text-sm md:text-base transition-opacity duration-500">Panel informativo con contadores, métricas clave del sistema y exportación de informes a formato PDF.</p>
+      </div>
+      
+      <!-- Copia de Seguridad -->
+      <div class="module-card bg-gray-900 border border-gray-800 p-6 md:p-8 rounded-lg transition-all duration-500 reveal">
+        <div class="card-icon text-3xl mb-4 md:mb-6 flex justify-center" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yang transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-yang transition-colors duration-500">Copia de Seguridad</h3>
+        <p class="text-balance text-sm md:text-base transition-opacity duration-500">Sistema de respaldo con programación automática, restauración selectiva y historial de versiones para recuperación de datos.</p>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* Animaciones suaves para las cards */
+  .module-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .module-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  
+  .module-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .module-card:hover::before {
+    opacity: 1;
+  }
+  
+  .module-card:hover .card-icon svg {
+    transform: scale(1.15) translateY(-2px);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+  }
+  
+  /* Animación de entrada para las cards con reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Staggered reveal animation */
+  .grid .reveal:nth-child(1) { transition-delay: 0.1s; }
+  .grid .reveal:nth-child(2) { transition-delay: 0.2s; }
+  .grid .reveal:nth-child(3) { transition-delay: 0.3s; }
+  .grid .reveal:nth-child(4) { transition-delay: 0.4s; }
+  .grid .reveal:nth-child(5) { transition-delay: 0.5s; }
+  .grid .reveal:nth-child(6) { transition-delay: 0.6s; }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Observe elements with reveal class
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -10% 0px'
+    };
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // Optional: stop observing after reveal
+          // revealObserver.unobserve(entry.target);
+        } else {
+          // Comment this line if you don't want elements to hide when scrolled away
+          // entry.target.classList.remove('active');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all elements with reveal class
+    document.querySelectorAll('.reveal').forEach(element => {
+      revealObserver.observe(element);
+    });
+    
+    // Add hover state animations with smooth state change
+    const cards = document.querySelectorAll('.module-card');
+    cards.forEach(card => {
+      // Mouse enter animation with subtle delay
+      card.addEventListener('mouseenter', () => {
+        // Add subtle glow effect
+        card.style.transition = 'all 0.5s cubic-bezier(0.33, 1, 0.68, 1)';
+      });
+      
+      // Mouse leave animation with easing
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'all 0.7s cubic-bezier(0.33, 1, 0.68, 1)';
+      });
+      
+      // Optional: Add touch support for mobile
+      card.addEventListener('touchstart', () => {
+        card.classList.add('touch-active');
+      }, {passive: true});
+      
+      card.addEventListener('touchend', () => {
+        setTimeout(() => {
+          card.classList.remove('touch-active');
+        }, 300);
+      }, {passive: true});
+    });
+  });
+</script>

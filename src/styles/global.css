@@ -5,7 +5,39 @@
 html {
   scroll-behavior: smooth;
 }
+/* Estilos para el fondo global con efecto azul rey */
+body, main {
+  background-color: #000;
+  color: #fff;
+  position: relative;
+}
 
+/* Gradient effect */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(25, 25, 112, 0.3) 0%, 
+    rgba(0, 0, 128, 0.2) 40%, 
+    rgba(0, 0, 139, 0.05) 80%, 
+    rgba(0, 0, 0, 0) 100%);
+  filter: blur(50px);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Noise texture */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url('/noise.svg');
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
+}
 body {
   font-family: var(--font-primary);
   background-color: var(--color-pure-black);

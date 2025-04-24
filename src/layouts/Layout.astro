@@ -4,7 +4,14 @@ interface Props {
   description?: string;
 }
 
-const { title = "Aplicación de gestión administrativa", description = "Sistema integral de gestión administrativa académica que optimiza la planificación y administración de recursos para entornos educativos." } = Astro.props;
+const { 
+  title = "Aplicación de gestión administrativa", 
+  description = "Sistema integral de gestión administrativa académica que optimiza la planificación y administración de recursos para entornos educativos." 
+} = Astro.props;
+
+// Definir las URLs base64 inline para los placeholders (imágenes muy pequeñas y borrosas)
+const mockup1Placeholder = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/4gIcSUNDX1BST0ZJTEUAAQEAAAIMbGNtcwIQA..."; // Placeholder base64
+const mockup2Placeholder = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/4gIcSUNDX1BST0ZJTEUAAQEAAAIMbGNtcwIQA..."; // Placeholder base64
 ---
 
 <!DOCTYPE html>
@@ -12,63 +19,116 @@ const { title = "Aplicación de gestión administrativa", description = "Sistema
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/icon.png" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
     
-    <!-- Precargar recursos críticos -->
+    <!-- Precargar imágenes críticas con la máxima prioridad -->
+    <link rel="preload" as="image" href="/Mockup1.webp" fetchpriority="high" />
+    
+    <!-- Precargar CSS crítico -->
     <link rel="preload" href="/_astro/Header.-O8eQvs3.css" as="style" />
     
     <!-- Configuración de seguridad -->
     <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;" />
     
-    <!-- Optimización para SEO -->
+    <!-- SEO -->
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Fabián Cruz" />
     <meta name="keywords" content="gestión administrativa, sistema académico, administración escolar, horarios académicos" />
     
     <title>{title}</title>
     
-    <!-- GSAP para animaciones -->
+    <!-- Estilos críticos inline para mostrar inmediatamente contenido visual -->
+    <!-- Estilos críticos inline para mostrar inmediatamente contenido visual -->
+<style is:inline>
+  body { 
+    margin: 0; 
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #000; /* Base black background matching hero section */
+    color: #fff;
+    position: relative;
+  }
+
+  /* Radial gradient overlay matching hero section - using royal blue tones */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, 
+      rgba(25, 25, 112, 0.3) 0%, 
+      rgba(0, 0, 128, 0.2) 40%, 
+      rgba(0, 0, 139, 0.05) 80%, 
+      rgba(0, 0, 0, 0) 100%);
+    filter: blur(50px);
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Noise texture overlay matching hero section */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: url('/noise.svg');
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .text-gray-400 {
+    color: #adadb8 !important;
+  }
+</style>
+    
+    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     
-    <!-- Estilos críticos inline para renderizado más rápido -->
-    <style>
-      /* Estilos mínimos para el contenido visible inicialmente */
-      body { 
-        margin: 0; 
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-        background-color: #000;
-        color: #fff;
-      }
-      
-      /* Mejora del contraste para accesibilidad */
-      .text-gray-400 {
-        color: #adadb8 !important; /* Gris más claro para mejor contraste */
-      }
-    </style>
-    
-    <!-- El resto de tus estilos -->
+    <!-- El resto de estilos -->
     <slot name="head" />
   </head>
   <body>
     <slot />
     
-    <!-- Script para animaciones de scroll -->
+    <!-- Scripts de animación -->
     <script src="/src/scripts/scroll-animations.js"></script>
     
-    <!-- Script para cargar imágenes WebP con fallback a formato original -->
-    <script>
-      // Detección de soporte WebP
-      function checkWebpSupport() {
-        const elem = document.createElement('canvas');
-        if (elem.getContext && elem.getContext('2d')) {
-          return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+    <!-- Script para asegurar carga instantánea de imágenes -->
+    <script is:inline>
+      // Ejecutar inmediatamente sin esperar a DOMContentLoaded
+      (function() {
+        function handleImageLoad(img) {
+          if (img.complete) {
+            const placeholder = img.previousElementSibling;
+            if (placeholder && placeholder.classList.contains('img-placeholder')) {
+              placeholder.style.opacity = '0';
+            }
+          }
         }
-        return false;
-      }
-      
+        
+        window.addEventListener('load', function() {
+          const images = document.querySelectorAll('.hero-mockup');
+          images.forEach(img => {
+            handleImageLoad(img);
+            img.addEventListener('load', () => handleImageLoad(img));
+          });
+        });
+        
+        function checkWebpSupport() {
+          const elem = document.createElement('canvas');
+          if (elem.getContext && elem.getContext('2d')) {
+            return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+          }
+          return false;
+        }
+        
+        if (!checkWebpSupport()) {
+          document.documentElement.classList.add('no-webp');
+        }
+      })();
     </script>
   </body>
 </html>
