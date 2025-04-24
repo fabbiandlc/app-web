@@ -1,0 +1,132 @@
+---
+---
+
+<section class="relative min-h-screen overflow-hidden px-4 flex items-center justify-center" id="hero-section">
+  <div class="absolute inset-0 bg-black"></div>
+  <div class="gradient-bg absolute inset-0 opacity-80 pointer-events-none"></div>
+  <div class="absolute inset-0 bg-[url('/noise.svg')] opacity-10"></div>
+  
+  <!-- Hero Content -->
+  <div class="max-w-6xl mx-auto w-screen relative z-10 py-8 md:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
+      <div class="flex flex-col justify-center lg:pr-0 reveal text-center lg:text-left">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-2 md:mb-3">
+          Gestión <span class="text-yang">Administrativa Académica</span>
+        </h1>
+        <p class="text-balance text-base md:text-lg mb-3 md:mb-4 max-w-lg mx-auto lg:mx-0">
+          Optimiza las tareas administrativas en tu entorno académico con una interfaz intuitiva que facilita la planificación y gestión de recursos.
+        </p>
+        <div class="flex flex-wrap gap-2 justify-center lg:justify-start">
+          <a 
+            href="/descargar" 
+            class="bg-yang text-yin hover-yang font-medium py-2 md:py-3 px-6 md:px-8 rounded-md text-sm w-full sm:w-auto text-center inline-flex items-center justify-center"
+            aria-label="Descargar la aplicación"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Descargar
+          </a>
+          <a 
+            href="/manual" 
+            class="bg-transparent hover:bg-gray-800 transition-colors text-yang border border-yang font-medium py-2 md:py-3 px-6 md:px-8 rounded-md text-sm w-full sm:w-auto text-center inline-flex items-center justify-center"
+            aria-label="Ver manual de usuario"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            Manual de usuario
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-center lg:justify-start mt-2 lg:mt-0 reveal">
+        <div class="relative">
+          <img 
+            src="/Mockup.webp" 
+            alt="Interfaz de la aplicación mostrando el panel de actividades" 
+            class="w-60 sm:w-68 md:w-72 h-auto"
+            width="288" 
+            height="576"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <div class="absolute inset-0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gradient-bg {
+    background: radial-gradient(circle at 50% 50%, rgba(180, 180, 180, 0.7) 0%, rgba(100, 100, 100, 0.3) 30%, rgba(30, 30, 30, 0.1) 70%, rgba(0, 0, 0, 0) 100%);
+    filter: blur(30px);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroSection = document.getElementById('hero-section');
+    const gradientBg = heroSection.querySelector('.gradient-bg');
+    
+    let mouseX = 50;
+    let mouseY = 50;
+    let targetX = 50;
+    let targetY = 50;
+    
+    // Variables para el movimiento de "humo pesado"
+    let time = 0;
+    let orbit1 = { x: 0, y: 0 };
+    let orbit2 = { x: 0, y: 0 };
+    
+    // Función para capturar la posición del mouse
+    function trackMouse(e) {
+      const heroRect = heroSection.getBoundingClientRect();
+      
+      // Solo aplicar el efecto dentro del header
+      if (e.clientY <= heroRect.bottom) {
+        // Calcular la posición relativa al hero section
+        targetX = ((e.clientX - heroRect.left) / heroRect.width) * 100;
+        targetY = ((e.clientY - heroRect.top) / heroRect.height) * 100;
+      }
+    }
+    
+    // Función para animar el degradado como humo pesado
+    function animateSmokyGradient() {
+      time += 0.01;
+      
+      // Actualizar la posición principal con inercia (efecto de humo pesado)
+      mouseX += (targetX - mouseX) * 0.05;
+      mouseY += (targetY - mouseY) * 0.05;
+      
+      // Calcular órbitas con diferentes frecuencias y amplitudes
+      orbit1.x = Math.sin(time * 0.8) * 8;
+      orbit1.y = Math.cos(time * 0.7) * 6;
+      
+      orbit2.x = Math.sin(time * 1.2 + 2) * 4;
+      orbit2.y = Math.cos(time * 1.5 + 1) * 3;
+      
+      // Combinar todos los movimientos
+      const finalX = mouseX + orbit1.x + orbit2.x * 0.5;
+      const finalY = mouseY + orbit1.y + orbit2.y * 0.5;
+      
+      // Aplicar el efecto con un gradiente más denso y grande
+      gradientBg.style.background = `radial-gradient(
+        circle at ${finalX}% ${finalY}%, 
+        rgba(100, 100, 150, 0.7) 0%, 
+        rgba(100, 100, 100, 0.3) 30%, 
+        rgba(30, 30, 30, 0.1) 70%,
+        rgba(0, 0, 0, 0) 100%
+      )`;
+      
+      requestAnimationFrame(animateSmokyGradient);
+    }
+    
+    // Agregar listener para el movimiento del mouse
+    document.addEventListener('mousemove', trackMouse);
+    
+    // Iniciar la animación
+    animateSmokyGradient();
+  });
+</script>

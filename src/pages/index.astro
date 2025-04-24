@@ -1,21 +1,28 @@
 ---
-import Header from '../pages/Header.astro';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ModulosSection from '../components/ModulosSection.astro';
+import RolesSection from '../components/RolesSection.astro';
+import FuncionalidadesSection from '../components/FuncionalidadesSection.astro';
+import DescargaSection from '../components/DescargaSection.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+
+// Definir metadatos para SEO
+const title = "Sistema de Gestión Administrativa Académica";
+const description = "Optimiza las tareas administrativas en tu entorno académico con una interfaz intuitiva que facilita la planificación y gestión de recursos.";
 ---
 
-<Layout>
-  <main
-    class="flex flex-col min-h-screen w-full bg-[#000] text-white relative overflow-hidden"
-  >
-    <div
-      class="absolute inset-0 bg-gradient-to-br from-gray-900 to-black opacity-90"
-    ></div>
-    <div
-      class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"
-    ></div>
-
+<Layout title={title} description={description}>
+  <main class="min-h-screen bg-black text-white">
     <Header />
+    <Hero />
+    <ModulosSection />
+    <RolesSection />
+    <FuncionalidadesSection />
+    <DescargaSection />
+    <Footer />
   </main>
 </Layout>
 

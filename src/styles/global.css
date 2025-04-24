@@ -1,1 +1,89 @@
 @import "tailwindcss";
+@import "./yinyang.css";
+
+/* Estilos globales para el diseño minimalista Yin Yang */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-pure-black);
+  color: var(--color-pure-white);
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevenir scroll horizontal en dispositivos móviles */
+}
+
+/* Mejoras de accesibilidad */
+:focus {
+  outline: 2px solid var(--color-medium-gray);
+  outline-offset: 2px;
+}
+
+/* Transiciones suaves */
+a, button {
+  transition: var(--transition-standard);
+}
+
+/* Animaciones basadas en scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilos para todas las secciones - tema consistente */
+section {
+  background-color: var(--color-pure-black);
+  color: var(--color-pure-white);
+}
+
+/* Reglas de responsividad adicionales */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Media queries para mejorar la responsividad */
+@media (max-width: 640px) {
+  h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.2;
+  }
+  
+  h2, h3 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    line-height: 1.3;
+  }
+  
+  p {
+    font-size: 0.95rem;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Ajustes para dispositivos medianos */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Ajustes para dispositivos táctiles */
+@media (hover: none) {
+  a:hover, button:hover {
+    /* Desactivar efectos hover en dispositivos táctiles */
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
