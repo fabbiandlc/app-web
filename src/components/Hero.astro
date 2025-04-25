@@ -50,6 +50,8 @@
       />
     </div>
   </div>
+  <div id="mockup-trigger" class="h-[50px] w-full"></div>
+
 </section>
 
 <style>
@@ -78,16 +80,18 @@
   }
   
   .mockup-container {
-    position: relative;
-    transform: translateY(100%);
-    opacity: 0;
-    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  
-  .mockup-container.visible {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  position: relative;
+  transform: translateY(40px); /* Pequeño desplazamiento hacia abajo inicial */
+  opacity: 0;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.mockup-container.visible {
+  transform: translateY(0); /* Aparece en su lugar */
+  opacity: 1;
+}
+
+
   
   .mockup-image {
     display: block;
@@ -106,48 +110,23 @@
     transition: opacity 0.8s ease-out;
   }
   
-  /* Mobile-specific styles */
   @media (max-width: 640px) {
-    /* Exact mobile screen height */
-    #hero-section {
-      min-height: 100vh;
-      height: 100vh; /* Exactamente el tamaño de la pantalla */
-      display: flex;
-      flex-direction: column;
-    }
-    
-    /* Content positioned in the center */
-    #hero-section > div:first-of-type {
-      margin-bottom: 50vh; /* Espacio para la imagen */
-    }
-    
-    /* Full width mockup for mobile */
-    .fixed-bottom-container {
-      height: 50vh;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-    }
-    
-    .mockup-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      /* Mostrar directamente sin animación en móvil */
-      transform: translateY(0);
-      opacity: 1;
-      transition: none;
-    }
-    
-    .mockup-image {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      max-height: 50vh;
-      object-fit: contain;
-      border-radius: 24px 24px 0 0;
-    }
+  /* Reduced mobile screen height */
+  #hero-section {
+    min-height: 90vh; /* Reducido de 100vh */
+    height: 80vh; /* Reducido de 100vh */
+    /* ... */
   }
+  
+  /* Ajustar también la proporción del mockup */
+  .fixed-bottom-container {
+    height: 40vh; /* Reducido de 50vh */
+  }
+  
+  .mockup-image {
+    max-height: 40vh; /* Reducido de 50vh */
+  }
+}
   
   /* Fix for iOS safari bottom bar */
   @supports (-webkit-touch-callout: none) {
@@ -398,21 +377,26 @@
     updateParticles();
     
     // IntersectionObserver solo para desktop
-    if ('IntersectionObserver' in window && !isMobile()) {
-      const options = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -10% 0px'
-      };
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            checkScrollPosition();
-          }
-        });
-      }, options);
-      
-      observer.observe(heroSection);
-    }
+    // Reemplaza el scroll listener y el resize con solo IntersectionObserver
+// IntersectionObserver solo para desktop
+if ('IntersectionObserver' in window && !isMobile()) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        mockupContainer.classList.add('visible');
+      } else {
+        mockupContainer.classList.remove('visible');
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0.1
+  });
+
+  const triggerElement = document.getElementById('mockup-trigger');
+  if (triggerElement) observer.observe(triggerElement);
+}
+
+
   });
 </script> 
