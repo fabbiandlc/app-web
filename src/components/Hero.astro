@@ -1,4 +1,4 @@
-<section class="relative min-h-[150vh] px-4 flex flex-col items-center justify-center" id="hero-section">
+<section class="relative min-h-[250vh] md:min-h-[150vh] px-4 flex flex-col items-center justify-center" id="hero-section">
   <div class="absolute inset-0 bg-black"></div>
   <div class="gradient-bg absolute inset-0 opacity-70 pointer-events-none"></div>
   <div class="particles-container absolute inset-0 pointer-events-none"></div>
@@ -6,13 +6,13 @@
   
   <!-- Hero Content - Centrado verticalmente en la pantalla -->
   <div class="w-full flex flex-col items-center justify-center text-center mb-64 md:mb-80 relative z-10">
-    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-2 md:mb-3">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-2 md:mb-3">
       Gestión <span class="text-yang">Administrativa Académica</span>
     </h1>
-    <p class="text-balance text-base md:text-lg mb-3 md:mb-4 max-w-lg mx-auto">
+    <p class="text-balance text-sm sm:text-base md:text-lg mb-3 md:mb-4 max-w-lg mx-auto">
       Optimiza las tareas administrativas en tu entorno académico con una interfaz intuitiva que facilita la planificación y gestión de recursos.
     </p>
-    <div class="flex flex-wrap gap-2 justify-center">
+    <div class="flex flex-col sm:flex-row flex-wrap gap-3 justify-center w-full max-w-xs sm:max-w-none">
       <a 
         href="/Gestión.apk" 
         download
@@ -53,6 +53,7 @@
 </section>
 
 <style>
+  /* Base styles */
   .gradient-bg {
     background: radial-gradient(circle at 50% 50%, rgba(25, 25, 112, 0.3) 0%, rgba(0, 0, 128, 0.2) 40%, rgba(0, 0, 139, 0.05) 80%, rgba(0, 0, 0, 0) 100%);
     filter: blur(50px);
@@ -63,7 +64,7 @@
     overflow: hidden;
   }
   
-  /* Estilos para el mockup */
+  /* Desktop styles (default) */
   .fixed-bottom-container {
     position: absolute;
     bottom: 0;
@@ -104,6 +105,56 @@
     opacity: 0;
     transition: opacity 0.8s ease-out;
   }
+  
+  /* Mobile-specific styles */
+  @media (max-width: 640px) {
+    /* Exact mobile screen height */
+    #hero-section {
+      min-height: 100vh;
+      height: 100vh; /* Exactamente el tamaño de la pantalla */
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Content positioned in the center */
+    #hero-section > div:first-of-type {
+      margin-bottom: 50vh; /* Espacio para la imagen */
+    }
+    
+    /* Full width mockup for mobile */
+    .fixed-bottom-container {
+      height: 50vh;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    .mockup-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      /* Mostrar directamente sin animación en móvil */
+      transform: translateY(0);
+      opacity: 1;
+      transition: none;
+    }
+    
+    .mockup-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 50vh;
+      object-fit: contain;
+      border-radius: 24px 24px 0 0;
+    }
+  }
+  
+  /* Fix for iOS safari bottom bar */
+  @supports (-webkit-touch-callout: none) {
+    .fixed-bottom-container {
+      bottom: env(safe-area-inset-bottom, 0);
+    }
+  }
 </style>
 
 <script>
@@ -122,16 +173,22 @@
     
     // Partículas variables
     const particles = [];
-    const maxParticles = 30;
+    const maxParticles = isMobile() ? 15 : 30; // Reducir partículas en móvil
     let lastParticleTime = 0;
+    
+    // Detectar si es dispositivo móvil
+    function isMobile() {
+      return window.innerWidth <= 640 || ('ontouchstart' in window);
+    }
     
     // Función para crear una partícula
     function createParticle(x, y) {
       const particle = document.createElement('div');
       particle.classList.add('particle');
       
-      // Tamaño aleatorio entre 5px y 15px
-      const size = Math.random() * 10 + 5;
+      // Tamaño aleatorio entre 5px y 15px (más pequeño en móvil)
+      const sizeFactor = isMobile() ? 0.7 : 1;
+      const size = Math.random() * 10 * sizeFactor + 5;
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
       
@@ -142,13 +199,14 @@
       particle.style.top = `${posY}px`;
       
       // Velocidad y dirección aleatoria
+      const speedFactor = isMobile() ? 0.8 : 1; // Reducir velocidad en móvil
       const speed = {
-        x: (Math.random() - 0.5) * 1.5,
-        y: (Math.random() - 0.5) * 1.5 - 1 // Tendencia hacia arriba
+        x: (Math.random() - 0.5) * 1.5 * speedFactor,
+        y: (Math.random() - 0.5) * 1.5 * speedFactor - 1 // Tendencia hacia arriba
       };
       
       // Duración de vida
-      const lifespan = 2000 + Math.random() * 3000; // 2-5 segundos
+      const lifespan = (2000 + Math.random() * 3000) * (isMobile() ? 0.8 : 1); // 2-5 segundos (menos en móvil)
       const creationTime = Date.now();
       
       // Agregar al DOM
@@ -231,6 +289,28 @@
       }
     }
     
+    // Función para manejar eventos touch
+    function handleTouch(e) {
+      if (e.touches && e.touches[0]) {
+        trackMouse(e.touches[0]);
+      }
+    }
+    
+    // Simular partículas automáticas para dispositivos móviles
+    function createRandomParticles() {
+      if (isMobile()) {
+        const heroRect = heroSection.getBoundingClientRect();
+        const randomX = Math.random() * heroRect.width;
+        const randomY = Math.random() * (heroRect.height * 0.6); // Solo en la parte superior
+        
+        const currentTime = Date.now();
+        if (currentTime - lastParticleTime > 500) { // Cada 500ms
+          createParticle(randomX + heroRect.left, randomY + heroRect.top);
+          lastParticleTime = currentTime;
+        }
+      }
+    }
+    
     // Función para animar el degradado de humo azul rey
     function animateRoyalBlueSmoke() {
       time += 0.01;
@@ -260,32 +340,65 @@
         )
       `;
       
+      // Crear partículas aleatorias para móviles
+      createRandomParticles();
+      
       requestAnimationFrame(animateRoyalBlueSmoke);
     }
     
-    // Simple scroll animation for mockup
+    // Simple scroll animation for mockup - solo en escritorio
     function checkScrollPosition() {
-      const scrollPosition = window.scrollY;
-      const triggerPosition = window.innerHeight * 0.1;
-      
-      if (scrollPosition > triggerPosition) {
-        mockupContainer.classList.add('visible');
+      // Solo aplicar animación si NO es dispositivo móvil
+      if (!isMobile()) {
+        const scrollPosition = window.scrollY;
+        const triggerPosition = window.innerHeight * 0.1;
+        
+        if (scrollPosition > triggerPosition) {
+          mockupContainer.classList.add('visible');
+        } else {
+          mockupContainer.classList.remove('visible');
+        }
       } else {
-        mockupContainer.classList.remove('visible');
+        // En móvil, siempre mostrar sin animación
+        mockupContainer.classList.add('visible');
       }
     }
     
     // Initialize animations
     document.addEventListener('mousemove', trackMouse);
-    window.addEventListener('scroll', checkScrollPosition);
+    document.addEventListener('touchmove', handleTouch);
+    document.addEventListener('touchstart', handleTouch);
     
-    // Check initial scroll position
-    checkScrollPosition();
+    // Solo agregar listener de scroll para desktop
+    if (!isMobile()) {
+      window.addEventListener('scroll', checkScrollPosition);
+    }
+    
+    window.addEventListener('resize', () => {
+      // En cambio de tamaño, verificar si sigue siendo móvil o no
+      if (isMobile()) {
+        // Para móvil siempre mostrar sin animación
+        mockupContainer.classList.add('visible');
+      } else {
+        // En desktop, volver a verificar posición
+        checkScrollPosition();
+      }
+    });
+    
+    // Check initial settings
+    if (isMobile()) {
+      // En móvil, siempre mostrar el mockup sin animar
+      mockupContainer.classList.add('visible');
+    } else {
+      // En desktop, verificar posición de scroll
+      checkScrollPosition();
+    }
+    
     animateRoyalBlueSmoke();
     updateParticles();
     
-    // IntersectionObserver for better performance
-    if ('IntersectionObserver' in window) {
+    // IntersectionObserver solo para desktop
+    if ('IntersectionObserver' in window && !isMobile()) {
       const options = {
         threshold: 0.1,
         rootMargin: '0px 0px -10% 0px'
@@ -302,4 +415,4 @@
       observer.observe(heroSection);
     }
   });
-</script>
+</script> 
